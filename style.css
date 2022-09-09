@@ -1,6 +1,20 @@
 .card {
     border: solid 1px;
-    height: 200px;
     width: 400px;
+}
+
+.card div {
+    display: flex;
+    flex-direction: row;
+}
+
+#add-button {
+    position: absolute;
+    top: 90vh;
+    bottom: 10vh;
+    left: 80vw;
+    right: 20vw;
+    width: 100px;
+    height: 20px;
 }
 

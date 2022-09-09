@@ -58,3 +58,26 @@ function showBooks() {
 
 showBooks();
 
+const newBookButton = document.querySelector('#new-book-button');
+newBookButton.addEventListener('click', () => {
+    let form = document.createElement('form');
+    let titleLabel = document.createElement('label');
+    let title = document.createElement('input');
+    let authorLabel = document.createElement('label');
+    let author = document.createElement('input');
+    let pagesLabel = document.createElement('label');
+    let pages = document.createElement('input');
+    let readLabel = document.createElement('label');
+    let read = document.createElement('input');
+    let body = document.querySelector('body');
+    body.appendChild(form);
+    form.appendChild(titleLabel);
+    form.appendChild(title);
+    form.appendChild(authorLabel);
+    form.appendChild(author);
+    form.appendChild(pagesLabel);
+    form.appendChild(pages);
+    form.appendChild(readLabel);
+    form.appendChild(read);
+});
+

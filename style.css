@@ -8,7 +8,7 @@
     flex-direction: row;
 }
 
-#add-button {
+#new-book-button {
     position: absolute;
     top: 90vh;
     bottom: 10vh;

@@ -1,8 +1,10 @@
 let myLibrary = [
-    {title: "A game of thrones", author: "George R.R. Martin", pages: 1000, read: "Yes"},
+    /*{title: "A game of thrones", author: "George R.R. Martin", pages: 1000, read: "Yes"},
     {title: "Nuestra parte de noche", author: "Mariana Enriquez", pages: 500, read: "Yes"},
-    {title: "Rayuela", author: "Horacio Quiroga", pages: 700, read: "No"}
+    {title: "Rayuela", author: "Horacio Quiroga", pages: 700, read: "No"}*/
 ];
+
+let submitClickCounter = 0;
 
 function Book(title, author, pages, read) {
         this.title = title,
@@ -16,7 +18,7 @@ function addBookToLibrary(book) {
 }
 
 function showBooks() {
-    for (let i = 0; i < myLibrary.length; i++) {
+    for (let i = submitClickCounter; i < myLibrary.length; i++) {
         let card = document.createElement('div');
         let title = document.createElement('h2');
         let firstLine = document.createElement('div');
@@ -104,5 +106,18 @@ newBookButton.addEventListener('click', () => {
     form.appendChild(readLabel);
     form.appendChild(read);
     form.appendChild(submit);
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    } );
+
+    form.addEventListener('submit', () => {
+        let values = [];
+        form.querySelectorAll('input').forEach(field => values.push(field.value));
+        let newBook = new Book(...values);
+        myLibrary.push(newBook);
+        showBooks(); 
+        submitClickCounter += 1;
+    })
 });
 

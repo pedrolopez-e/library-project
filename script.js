@@ -118,6 +118,7 @@ newBookButton.addEventListener('click', () => {
         myLibrary.push(newBook);
         showBooks(); 
         submitClickCounter += 1;
+        form.remove();
     })
 });
 

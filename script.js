@@ -63,47 +63,41 @@ showBooks();
 const newBookButton = document.querySelector('#new-book-button');
 newBookButton.addEventListener('click', () => {
     let form = document.createElement('form');
+    let formTitle = document.createElement('h4');
+    formTitle.innerHTML = "New book info";
+    formTitle.classList.add('form-title');
     // Title
-    let titleLabel = document.createElement('label');
     let title = document.createElement('input');
     title.setAttribute("type", "text");
     title.setAttribute("id", "title");
-    titleLabel.setAttribute("for", "title");
-    titleLabel.innerHTML = "Title: ";
+    
     // Author
-    let authorLabel = document.createElement('label');
     let author = document.createElement('input');
     author.setAttribute("type", "text");
     author.setAttribute("id", "author");
-    authorLabel.setAttribute("for", "author");
-    authorLabel.innerHTML = "Author: ";
+    
     // Pages
-    let pagesLabel = document.createElement('label');
     let pages = document.createElement('input');
     pages.setAttribute("type", "number");
     pages.setAttribute("id", "pages");
-    pagesLabel.setAttribute("for", "pages");
-    pagesLabel.innerHTML = "Pages: ";
+   
     // Read
-    let readLabel = document.createElement('label');
     let read = document.createElement('input');
     read.setAttribute("type", "text");
     read.setAttribute("id", "read");
-    readLabel.setAttribute("for", "read");
-    readLabel.innerHTML = "Read? ";
+
     // Submit
     let submit = document.createElement('input');
     submit.setAttribute("type","submit");
+    submit.setAttribute("value", "SUBMIT")
+    submit.classList.add('submit-button');
 
     let body = document.querySelector('body');
     body.appendChild(form);
-    form.appendChild(titleLabel);
+    form.appendChild(formTitle);
     form.appendChild(title);
-    form.appendChild(authorLabel);
     form.appendChild(author);
-    form.appendChild(pagesLabel);
     form.appendChild(pages);
-    form.appendChild(readLabel);
     form.appendChild(read);
     form.appendChild(submit);
 

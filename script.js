@@ -66,30 +66,35 @@ newBookButton.addEventListener('click', () => {
     let formTitle = document.createElement('h4');
     formTitle.innerHTML = "New book info";
     formTitle.classList.add('form-title');
+
     // Title
     let title = document.createElement('input');
     title.setAttribute("type", "text");
     title.setAttribute("id", "title");
+    title.setAttribute("placeholder", "Title");
     
     // Author
     let author = document.createElement('input');
     author.setAttribute("type", "text");
     author.setAttribute("id", "author");
+    author.setAttribute("placeholder", "Author");
     
     // Pages
     let pages = document.createElement('input');
     pages.setAttribute("type", "number");
     pages.setAttribute("id", "pages");
+    pages.setAttribute("placeholder", "Number of pages")
    
     // Read
     let read = document.createElement('input');
     read.setAttribute("type", "text");
     read.setAttribute("id", "read");
+    read.setAttribute("placeholder", "Have you read it?");
 
     // Submit
     let submit = document.createElement('input');
     submit.setAttribute("type","submit");
-    submit.setAttribute("value", "SUBMIT")
+    submit.setAttribute("value", "SUBMIT");
     submit.classList.add('submit-button');
 
     let body = document.querySelector('body');

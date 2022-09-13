@@ -12,16 +12,38 @@
 body {
     background-color: #1f2029;
     color:#c4c3ca;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 .card {
-    border: solid 1px;
-    width: 400px;
+    border-radius: 5px;
+    background-color: #282935;
+    min-width: 200px;
+    max-width: max-content;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.card:hover {
+    box-shadow: inset 0px 0px 15px 5px rgb(255 235 167 / 20%);
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
 }
 
 .card div {
     display: flex;
     flex-direction: row;
+    gap: 10px;
+}
+
+.book-title {
+    margin-bottom: 20px;
 }
 
 #new-book-button {
@@ -53,6 +75,7 @@ body {
 form {
     position: absolute;
     border-radius: 5px;
+    border: solid #ffeba7;
     background-color: #282935;
     display: flex;
     flex-direction: column;

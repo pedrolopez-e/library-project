@@ -34,14 +34,17 @@ function showBooks() {
 
         title.innerHTML = myLibrary[i].title;
         author.innerHTML = "Author:";
+        author.style.fontWeight = 600;
         bookAuthor.innerHTML = myLibrary[i].author;
         pages.innerHTML = "Pages:";
+        pages.style.fontWeight = 600;
         bookPages.innerHTML = myLibrary[i].pages;
         read.innerHTML = "Read?";
+        read.style.fontWeight = 600;
         isRead.innerHTML = myLibrary[i].read;
 
 
-        title.classList.add('title');
+        title.classList.add('book-title');
         card.classList.add('card');
 
         body.appendChild(card);

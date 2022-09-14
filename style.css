@@ -16,6 +16,7 @@ body {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card {
@@ -70,6 +71,10 @@ body {
     cursor: pointer;
     transition: all .4s ease;
     -webkit-transition: all .4s ease;
+}
+
+.delete-button {
+
 }
 
 form {

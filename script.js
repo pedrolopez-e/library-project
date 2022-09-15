@@ -1,8 +1,4 @@
-let myLibrary = [
-    /*{title: "A game of thrones", author: "George R.R. Martin", pages: 1000, read: "Yes"},
-    {title: "Nuestra parte de noche", author: "Mariana Enriquez", pages: 500, read: "Yes"},
-    {title: "Rayuela", author: "Horacio Quiroga", pages: 700, read: "No"}*/
-];
+let myLibrary = [];
 
 let submitClickCounter = 0;
 
@@ -22,6 +18,10 @@ function addBookToLibrary(book) {
 function showBooks() {
 
     for (let i = 0; i < myLibrary.length; i++) {
+
+        if (myLibrary[i] == true) {
+            continue;
+        }
 
         // Create the books' cards
         let card = document.createElement('div');
@@ -52,12 +52,7 @@ function showBooks() {
         deleteButton.innerHTML = "-";
         deleteButton.setAttribute("data-id", i);
 
-        // Add the eventListener to the deleteButton
-        deleteButton.addEventListener('click', (e) => {
-            body.removeChild(e.target.parentNode);
-        });
-
-        // Create class for the card and its title that you will later use in the style
+        // Create class for the card, its title and the delete button that you will later use in the stylings.
         title.classList.add('book-title');
         card.classList.add('card');
         deleteButton.classList.add('delete-button');
@@ -76,6 +71,15 @@ function showBooks() {
         thirdLine.appendChild(read);
         thirdLine.appendChild(isRead);
     }
+
+    // Give the delete buttons functionality to remove books
+    let deleteButtons = document.querySelectorAll(".delete-button");
+    deleteButtons.forEach(deleteButton => deleteButton.addEventListener('click', (e) => {
+        e.target.parentNode.remove();
+        myLibrary.splice(deleteButton.getAttribute('data-id'), 1, true);
+        console.log(deleteButton.getAttribute('data-id'));
+    }
+    ));
 }
 
 const newBookButton = document.querySelector('#new-book-button');
@@ -137,6 +141,7 @@ newBookButton.addEventListener('click', () => {
         form.querySelectorAll('input').forEach(field => values.push(field.value));
         let newBook = new Book(...values);
         myLibrary.push(newBook);
+        newBook.id = myLibrary.indexOf(newBook);
         showBooks(); 
         form.remove();
     });

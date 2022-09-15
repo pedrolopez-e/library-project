@@ -53,6 +53,19 @@ function showBooks() {
         deleteButton.setAttribute("data-id", i);
         readOption.setAttribute("data-id", i);
 
+        // Adapt read option style depending on its object book isRead property
+        if (myLibrary[i].isRead == false) {
+            readOption.style.justifyContent = "start";
+            readOption.style.backgroundColor = "gray";
+            readOptionIn.style.backgroundColor = "#1f2029";
+            readOption.style.boxShadow = "box-shadow: none";
+        } else {
+            readOption.style.justifyContent = "end";
+            readOption.style.backgroundColor = "#ffeba7";
+            readOptionIn.style.backgroundColor = "#102770";
+            readOption.style.boxShadow = "box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%)";
+        }
+
         // Create class and id for the card, its title and the delete button that you will later use in the stylings.
         title.classList.add('book-title');
         card.classList.add('card');
@@ -84,17 +97,23 @@ function showBooks() {
     }
     ));
 
-    // Give the read option button functionality to change read status
+    // Give the read option button functionality to change read status and style when clicked
     let readOptions = document.querySelectorAll(".read-option-button");
     readOptions.forEach(readOption => readOption.addEventListener('click', () => {
-        if (myLibrary[parseInt(readOption.getAttribute('data-id'))] == false) {
-            readOption.style.justifyContent = "start";
-            myLibrary[parseInt(readOption.getAttribute('data-id'))] = true;
-        } else {
+        let readOptionIn = readOption.firstChild;
+        if (myLibrary[parseInt(readOption.getAttribute('data-id'))].isRead == false) {
             readOption.style.justifyContent = "end";
-            myLibrary[parseInt(readOption.getAttribute('data-id'))] = false;
+            readOption.style.backgroundColor = "#ffeba7";
+            readOptionIn.style.backgroundColor = "#102770";
+            readOption.style.boxShadow = "box-shadow: 0 8px 24px 0 rgb(255 235 167 / 20%)";
+            myLibrary[parseInt(readOption.getAttribute('data-id'))].isRead = true;
+        } else {
+            readOption.style.justifyContent = "start";
+            readOption.style.backgroundColor = "gray";
+            readOptionIn.style.backgroundColor = "#1f2029";
+            readOption.style.boxShadow = "box-shadow: none";
+            myLibrary[parseInt(readOption.getAttribute('data-id'))].isRead = false;
         }
-
     }));
 
 }

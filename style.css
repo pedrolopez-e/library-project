@@ -94,6 +94,21 @@ body {
     -webkit-transition: all .4s ease;
 }
 
+.read-option-button {
+    height: 30px;
+    width: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.read-option-button > div {
+    height: 20px;
+    width: 25px;
+    background-color: #102770;
+}
+
 form {
     position: absolute;
     border-radius: 5px;

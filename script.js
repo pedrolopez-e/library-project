@@ -3,11 +3,11 @@ let myLibrary = [];
 let submitClickCounter = 0;
 
 // Book class constructor
-function Book(title, author, pages, read) {
+function Book(title, author, pages) {
         this.title = title,
         this.author = author,
         this.pages = pages,
-        this.read = read;
+        this.isRead = false;
     }
 
 function addBookToLibrary(book) {
@@ -34,9 +34,10 @@ function showBooks() {
         let bookPages = document.createElement('p');
         let thirdLine = document.createElement('div');
         let read = document.createElement('p');
-        let isRead = document.createElement('p');
         let body = document.querySelector('body');
         let deleteButton = document.createElement('button');
+        let readOption = document.createElement('div');
+        let readOptionIn = document.createElement('div');
 
         // Add the cards' and their children's content
         title.innerHTML = myLibrary[i].title;
@@ -48,14 +49,15 @@ function showBooks() {
         bookPages.innerHTML = myLibrary[i].pages;
         read.innerHTML = "Read?";
         read.style.fontWeight = 600;
-        isRead.innerHTML = myLibrary[i].read;
         deleteButton.innerHTML = "-";
         deleteButton.setAttribute("data-id", i);
+        readOption.setAttribute("data-id", i);
 
-        // Create class for the card, its title and the delete button that you will later use in the stylings.
+        // Create class and id for the card, its title and the delete button that you will later use in the stylings.
         title.classList.add('book-title');
         card.classList.add('card');
         deleteButton.classList.add('delete-button');
+        readOption.classList.add("read-option-button");
 
         // Append the created elements
         body.appendChild(card);
@@ -69,7 +71,8 @@ function showBooks() {
         secondLine.appendChild(pages);
         secondLine.appendChild(bookPages);
         thirdLine.appendChild(read);
-        thirdLine.appendChild(isRead);
+        thirdLine.appendChild(readOption);
+        readOption.appendChild(readOptionIn);
     }
 
     // Give the delete buttons functionality to remove books
@@ -80,6 +83,20 @@ function showBooks() {
         console.log(deleteButton.getAttribute('data-id'));
     }
     ));
+
+    // Give the read option button functionality to change read status
+    let readOptions = document.querySelectorAll(".read-option-button");
+    readOptions.forEach(readOption => readOption.addEventListener('click', () => {
+        if (myLibrary[parseInt(readOption.getAttribute('data-id'))] == false) {
+            readOption.style.justifyContent = "start";
+            myLibrary[parseInt(readOption.getAttribute('data-id'))] = true;
+        } else {
+            readOption.style.justifyContent = "end";
+            myLibrary[parseInt(readOption.getAttribute('data-id'))] = false;
+        }
+
+    }));
+
 }
 
 const newBookButton = document.querySelector('#new-book-button');
@@ -106,12 +123,6 @@ newBookButton.addEventListener('click', () => {
     pages.setAttribute("type", "number");
     pages.setAttribute("id", "pages");
     pages.setAttribute("placeholder", "Number of pages")
-   
-    // Read
-    let read = document.createElement('input');
-    read.setAttribute("type", "text");
-    read.setAttribute("id", "read");
-    read.setAttribute("placeholder", "Have you read it?");
 
     // Submit
     let submit = document.createElement('input');
@@ -125,7 +136,6 @@ newBookButton.addEventListener('click', () => {
     form.appendChild(title);
     form.appendChild(author);
     form.appendChild(pages);
-    form.appendChild(read);
     form.appendChild(submit);
 
 

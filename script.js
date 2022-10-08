@@ -2,16 +2,13 @@ let myLibrary = [];
 
 let submitClickCounter = 0;
 
-// Book class constructor
-function Book(title, author, pages) {
+class Book {
+    constructor(title, author, pages) {
         this.title = title,
         this.author = author,
         this.pages = pages,
         this.isRead = false;
     }
-
-function addBookToLibrary(book) {
-    myLibrary.push(book);
 }
 
 // This function displays the books' cards on the window. It starts in a new position after every click on the submit button.
@@ -91,9 +88,8 @@ function showBooks() {
     // Give the delete buttons functionality to remove books
     let deleteButtons = document.querySelectorAll(".delete-button");
     deleteButtons.forEach(deleteButton => deleteButton.addEventListener('click', (e) => {
-        e.target.parentNode.remove();
-        myLibrary.splice(deleteButton.getAttribute('data-id'), 1, true);
-        console.log(deleteButton.getAttribute('data-id'));
+        e.target.parentNode.remove(); // Remove the node
+        myLibrary.splice(deleteButton.getAttribute('data-id'), 1, true); // Remove the book object from the array
     }
     ));
 
